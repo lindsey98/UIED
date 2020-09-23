@@ -89,10 +89,10 @@ class CNN:
             X = self.preprocess_img(imgs[i])
             Y = self.class_map[np.argmax(self.model.predict(X))]
             compos[i].category = Y
-            if show:
-                print(Y)
-                cv2.imshow('element', imgs[i])
-                cv2.waitKey()
+            # if show:
+            #     print(Y)
+            #     cv2.imshow('element', imgs[i])
+            #     cv2.waitKey()
 
     def evaluate(self, data, load=True):
         if load:

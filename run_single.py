@@ -12,18 +12,14 @@ def resize_height_by_longest_edge(img_path, resize_length=800):
         return int(resize_length * (height / width))
 
 
-if __name__ == '__main__':
-
-    # set input image path
-    input_path_img = 'data/input/11300.jpg'
-    output_root = 'data/output'
+def main(input_path_img, output_root):
 
     resized_height = resize_height_by_longest_edge(input_path_img)
 
-    is_ip = False
+    is_ip = True
     is_clf = False
     is_ocr = False
-    is_merge = True
+    is_merge = False
 
     if is_ocr:
         import detect_text_east.ocr_east as ocr
@@ -41,9 +37,7 @@ if __name__ == '__main__':
         if is_clf:
             classifier = {}
             from cnn.CNN import CNN
-            # classifier['Image'] = CNN('Image')
             classifier['Elements'] = CNN('Elements')
-            # classifier['Noise'] = CNN('Noise')
         ip.compo_detection(input_path_img, output_root, classifier=classifier,
                            resize_by_height=resized_height, show=False)
 
@@ -54,3 +48,11 @@ if __name__ == '__main__':
         ocr_path = pjoin(output_root, 'ocr', str(name) + '.json')
         merge.incorporate(input_path_img, compo_path, ocr_path, output_root,
                           resize_by_height=resized_height, show=True)
+
+if __name__ == '__main__':
+
+    # set input image path
+    input_path_img = 'D:\\ruofan\\Knowledge_graph_website\\data\\Facebook\\FP\\allsecurelocksmithandsecurity.com\\shot.png'
+    output_root = 'data/output'
+
+    main(input_path_img, output_root)

@@ -2,8 +2,136 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4069649-920d-465f-ac6b-bac85007c2bb" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/UIED.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UIED.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/CONFIG.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/CONFIG.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/11300.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/1220.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/1565.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/1627.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/18116.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/214.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/245.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/30800.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/413.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/472.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/472a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/493.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/497.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/505.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/66529.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/g.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/x.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/y.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/input/z.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Background/0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Block/19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/clips/Compo/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/clips/Compo/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/clips/Compo/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Compo/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/clips/Compo/8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/Text/9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/clips/bkg.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/clips/bkg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/compo.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/compo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/10_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/11300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/11300_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/1565.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/1565_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/214.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/214_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/24.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/245.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/245_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/24_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/2_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/30800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/30800_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/3_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/413.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/413_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/472.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/472_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/66529.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/66529_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/6_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/7_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/9_all.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ip/result.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/ip/result.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/11300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/11300.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/1565.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/1565.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/214.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/214.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/24.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/245.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/245.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/30800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/30800.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/413.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/413.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/472.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/472.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/66529.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/66529.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/ocr/result.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/result.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/result.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result_processing/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/result_processing/.ipynb_checkpoints/Untitled1-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/result_processing/.ipynb_checkpoints/box_plot-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_single.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_single.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +157,7 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../UI2CODE" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -42,6 +171,18 @@
       <recent name="D:\git_file\github\doing\UIED\result_processing" />
       <recent name="D:\git_file\github\doing\UIED\detect_text_east" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.run_single">
     <configuration name="main_select_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -110,7 +251,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_single" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="run_single" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
       <module name="UIED" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,15 +296,14 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.run_single" />
       <item itemvalue="Python.main_select_classification" />
       <item itemvalue="Python.main_single" />
       <item itemvalue="Python.run_batch" />
-      <item itemvalue="Python.run_single" />
       <item itemvalue="Python.view_gt" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_single" />
         <item itemvalue="Python.run_batch" />
         <item itemvalue="Python.view_gt" />
         <item itemvalue="Python.main_single" />
@@ -205,6 +345,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1596685652982">
@@ -285,11 +436,6 @@
           <url>file://$PROJECT_DIR$/detect_text_east/lib_east/eval.py</url>
           <line>108</line>
           <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/cnn/CNN.py</url>
-          <line>62</line>
-          <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/merge.py</url>
