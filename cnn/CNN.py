@@ -6,7 +6,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 import cv2
 
-from config.CONFIG import Config
+from UIED.config.CONFIG import Config
 cfg = Config()
 
 

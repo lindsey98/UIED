@@ -5,7 +5,7 @@ import json
 from tqdm import tqdm
 from os.path import join as pjoin, exists
 
-import merge
+from UIED import merge
 
 
 input_root = 'E:\\Mulong\\Datasets\\rico\\combined'

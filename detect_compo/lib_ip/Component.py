@@ -1,5 +1,5 @@
-from detect_compo.lib_ip.Bbox import Bbox
-import detect_compo.lib_ip.ip_draw as draw
+from UIED.detect_compo.lib_ip.Bbox import Bbox
+import UIED.detect_compo.lib_ip.ip_draw as draw
 
 import cv2
 

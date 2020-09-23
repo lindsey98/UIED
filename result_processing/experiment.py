@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 
-import lib_ip.block_division as blk
-import lib_ip.ip_preprocessing as pre
-import lib_ip.ip_detection as det
+import UIED.detect_compo.lib_ip.block_division as blk
+import UIED.detect_compo.lib_ip.ip_preprocessing as pre
+import UIED.detect_compo.lib_ip.ip_detection as det
 
 
 def nothing(x):
