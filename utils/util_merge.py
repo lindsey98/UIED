@@ -26,9 +26,9 @@ def draw_bounding_box_class(org, compos, color_map=C.COLOR, line=2, show=False, 
         board = cv2.rectangle(board, (corner[0], corner[1]), (corner[2], corner[3]), class_colors[compo.category], line)
         # board = cv2.putText(board, compo_class[i], (corners[i][0]+5, corners[i][1]+20),
         #                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, class_colors[compo_class[i]], 2)
-    if show:
-        cv2.imshow(name, board)
-        cv2.waitKey(0)
+#    if show:
+#        cv2.imshow(name, board)
+#        cv2.waitKey(0)
     return board
 
 
@@ -37,9 +37,9 @@ def draw_bounding_box(org, compos,  color=(0, 255, 0), line=2, show=False, name=
     for compo in compos:
         corner = compo.put_bbox()
         board = cv2.rectangle(board, (corner[0], corner[1]), (corner[2], corner[3]), color, line)
-    if show:
-        cv2.imshow(name, board)
-        cv2.waitKey(0)
+#    if show:
+#        cv2.imshow(name, board)
+#        cv2.waitKey(0)
     return board
 
 
@@ -52,8 +52,8 @@ def draw_bounding_box_non_text(org, compos, org_shape=None, color=(0, 255, 0), l
     if show:
         board_org_size = cv2.resize(board, (org_shape[1], org_shape[0]))
         # board_org_size = board_org_size[100:-110]
-        cv2.imshow(name, cv2.resize(board_org_size, (board.shape[1], board.shape[0])))
-        cv2.waitKey(0)
+#        cv2.imshow(name, cv2.resize(board_org_size, (board.shape[1], board.shape[0])))
+#        cv2.waitKey(0)
     return board
 
 

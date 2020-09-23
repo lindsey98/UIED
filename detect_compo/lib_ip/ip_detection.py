@@ -166,10 +166,10 @@ def rm_line_v_h(binary, show=False, max_line_thickness=C.THRESHOLD_LINE_THICKNES
 
     binary -= map_line
 
-    if show:
-        cv2.imshow('no-line', binary)
-        cv2.imshow('lines', map_line)
-        cv2.waitKey()
+#    if show:
+#        cv2.imshow('no-line', binary)
+#        cv2.imshow('lines', map_line)
+#        cv2.waitKey()
 
 
 def rm_line(binary,
@@ -225,9 +225,9 @@ def rm_line(binary,
                         start_row, end_row = -1, -1
                         check_line = False
 
-    if show:
-        cv2.imshow('no-line', binary)
-        cv2.waitKey()
+#    if show:
+#       cv2.imshow('no-line', binary)
+#        cv2.waitKey()
 
 
 def rm_noise_compos(compos):
