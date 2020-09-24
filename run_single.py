@@ -28,7 +28,7 @@ def main(input_path_img, output_root):
 if __name__ == '__main__':
 
     # set input image path
-    input_path_img = 'D:\\ruofan\\Knowledge_graph_website\\data\\Facebook\\FP\\allsecurelocksmithandsecurity.com\\shot.png'
+    input_path_img = './data/Facebook/FP/allsecurelocksmithandsecurity.com/shot.png'
     output_root = 'data/output'
 
     main(input_path_img, output_root)
