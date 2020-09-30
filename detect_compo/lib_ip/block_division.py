@@ -1,14 +1,14 @@
-import cv2
+import cv2.cv2 as cv2
 import numpy as np
 from random import randint as rint
 import time
 
-import UIED.detect_compo.lib_ip.ip_preprocessing as pre
-import UIED.detect_compo.lib_ip.ip_detection as det
-import UIED.detect_compo.lib_ip.ip_draw as draw
-import UIED.detect_compo.lib_ip.ip_segment as seg
-from UIED.detect_compo.lib_ip.Block import Block
-from UIED.config.CONFIG_UIED import Config
+import detect_compo.lib_ip.ip_preprocessing as pre
+import detect_compo.lib_ip.ip_detection as det
+import detect_compo.lib_ip.ip_draw as draw
+import detect_compo.lib_ip.ip_segment as seg
+from detect_compo.lib_ip.Block import Block
+from config.CONFIG_UIED import Config
 C = Config()
 
 
@@ -36,10 +36,10 @@ def block_bin_erase_all_blk(binary, blocks, pad=0, show=False):
     bin_org = binary.copy()
     for block in blocks:
         block.block_erase_from_bin(binary, pad)
-    if show:
-        cv2.imshow('before', bin_org)
-        cv2.imshow('after', binary)
-        cv2.waitKey()
+    # if show:
+    #     cv2.imshow('before', bin_org)
+    #     cv2.imshow('after', binary)
+    #     cv2.waitKey()
 
 
 def block_division(grey, org,
@@ -102,10 +102,10 @@ def block_division(grey, org,
                 #     continue
                 blocks.append(block)
                 draw.draw_region(region, broad)
-    if show:
-        cv2.imshow('flood-fill all', broad_all)
-        cv2.imshow('block', broad)
-        cv2.waitKey()
+    # if show:
+    #     cv2.imshow('flood-fill all', broad_all)
+    #     cv2.imshow('block', broad)
+    #     cv2.waitKey()
     if write_path is not None:
         cv2.imwrite(write_path, broad)
     return blocks

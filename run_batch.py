@@ -6,7 +6,7 @@ from tqdm import tqdm
 from os.path import join as pjoin, exists
 import cv2
 
-import UIED.detect_compo.ip_region_proposal as ip
+import detect_compo.ip_region_proposal as ip
 
 
 def resize_height_by_longest_edge(img_path, resize_length=800):

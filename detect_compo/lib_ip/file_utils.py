@@ -3,7 +3,7 @@ import pandas as pd
 import json
 from os.path import join as pjoin
 import time
-import cv2
+import cv2.cv2 as cv2
 
 
 def save_corners(file_path, corners, compo_name, clear=True):

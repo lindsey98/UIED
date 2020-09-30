@@ -6,9 +6,9 @@ import os
 import time
 from random import randint as rint
 
-from UIED.utils.util_merge import *
-from UIED.config.CONFIG import Config
-from UIED.utils.Element import Element
+from utils.util_merge import *
+from config.CONFIG import Config
+from utils.Element import Element
 C = Config()
 
 

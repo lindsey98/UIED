@@ -1,6 +1,6 @@
 import numpy as np
-import UIED.detect_compo.lib_ip.ip_draw as draw
-
+import detect_compo.lib_ip.ip_draw as draw
+import math
 
 class Bbox:
     def __init__(self, col_min, row_min, col_max, row_max):
@@ -42,6 +42,22 @@ class Bbox:
         # intersection
         else:
             return 2
+
+    def bbox_dist(self, bbox_b):
+        """
+        :return: -1 : a in b
+                 0  : a, b are not intersected
+                 1  : b in a
+                 2  : a, b are identical or intersected
+        """
+        col_min_a, row_min_a, col_max_a, row_max_a = self.put_bbox()
+        col_min_b, row_min_b, col_max_b, row_max_b = bbox_b.put_bbox()
+
+        # if a is in b
+        x_dist = min(abs(row_max_a - row_max_b), abs(row_min_a - row_min_b), abs(row_max_a - row_min_b), abs(row_min_a - row_max_b))
+        y_dist = min(abs(col_min_a - col_min_b), abs(col_min_a - col_max_b), abs(col_max_a - col_min_b), abs(col_max_a - col_max_b))
+        dist = math.sqrt((x_dist) ** 2 + (y_dist) ** 2)
+        return dist
 
     def bbox_relation_nms(self, bbox_b, bias=(0, 0)):
         '''

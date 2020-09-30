@@ -1,5 +1,5 @@
 import json
-import cv2
+import cv2.cv2 as cv2
 import numpy as np
 from os.path import join as pjoin
 import os
@@ -7,10 +7,10 @@ import time
 from random import randint as rint
 import shutil
 
-import UIED.detect_compo.lib_ip.ip_preprocessing as pre
-import UIED.detect_compo.lib_ip.file_utils as file
-import UIED.detect_compo.lib_ip.ip_detection as det
-from UIED.config.CONFIG import Config
+import detect_compo.lib_ip.ip_preprocessing as pre
+import detect_compo.lib_ip.file_utils as file
+import detect_compo.lib_ip.ip_detection as det
+from config.CONFIG import Config
 C = Config()
 
 

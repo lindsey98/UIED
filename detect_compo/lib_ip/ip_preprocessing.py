@@ -1,6 +1,6 @@
-import cv2
+import cv2.cv2 as cv2
 import numpy as np
-from UIED.config.CONFIG_UIED import Config
+from config.CONFIG_UIED import Config
 C = Config()
 
 
@@ -57,9 +57,9 @@ def reverse_binary(bin, show=False):
     Reverse the input binary image
     """
     r, bin = cv2.threshold(bin, 1, 255, cv2.THRESH_BINARY_INV)
-    if show:
-        cv2.imshow('binary_rev', bin)
-        cv2.waitKey()
+    # if show:
+    #     cv2.imshow('binary_rev', bin)
+    #     cv2.waitKey()
     return bin
 
 
@@ -70,7 +70,7 @@ def binarization(org, grad_min=C.THRESHOLD_PRE_GRADIENT, show=False, write_path=
     morph = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, (3, 3))  # remove noises
     if write_path is not None:
         cv2.imwrite(write_path, morph)
-    if show:
-        cv2.imshow('binary', morph)
-        cv2.waitKey()
+    # if show:
+    #     cv2.imshow('binary', morph)
+    #     cv2.waitKey()
     return morph

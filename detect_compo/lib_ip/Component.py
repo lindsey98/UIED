@@ -1,7 +1,6 @@
-from UIED.detect_compo.lib_ip.Bbox import Bbox
-import UIED.detect_compo.lib_ip.ip_draw as draw
-
-import cv2
+from detect_compo.lib_ip.Bbox import Bbox
+import detect_compo.lib_ip.ip_draw as draw
+import cv2.cv2 as cv2
 
 
 def cvt_compos_relative_pos(compos, col_min_base, row_min_base):
@@ -214,6 +213,12 @@ class Component:
         """
         return self.bbox.bbox_relation_nms(compo_b.bbox, bias)
 
+    def compo_dist(self, compo_b):
+        """
+        :return: distance between two boxes
+        """
+        return self.bbox.bbox_dist(compo_b.bbox)
+
     def compo_relative_position(self, col_min_base, row_min_base):
         '''
         Convert to relative position based on base coordinator
@@ -230,7 +235,7 @@ class Component:
         row_min = max(row_min - pad, 0)
         row_max = min(row_max + pad, img.shape[0])
         clip = img[row_min:row_max, column_min:column_max]
-        if show:
-            cv2.imshow('clipping', clip)
-            cv2.waitKey()
+        # if show:
+        #     cv2.imshow('clipping', clip)
+        #     cv2.waitKey()
         return clip

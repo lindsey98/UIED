@@ -1,9 +1,9 @@
-import cv2
+import cv2.cv2 as cv2
 from os.path import join as pjoin
 import time
 import numpy as np
 
-from UIED.detect_compo.lib_ip.Component import Component
+from detect_compo.lib_ip.Component import Component
 
 
 class Block(Component):

@@ -1,17 +1,16 @@
-import cv2
-from os.path import join as pjoin
+import cv2.cv2 as cv2
+import os
 import time
 import json
 import numpy as np
-
-import UIED.detect_compo.lib_ip.ip_preprocessing as pre
-import UIED.detect_compo.lib_ip.ip_draw as draw
-import UIED.detect_compo.lib_ip.ip_detection as det
-import UIED.detect_compo.lib_ip.ip_segment as seg
-import UIED.detect_compo.lib_ip.file_utils as file
-import UIED.detect_compo.lib_ip.block_division as blk
-import UIED.detect_compo.lib_ip.Component as Compo
-from UIED.config.CONFIG_UIED import Config
+import detect_compo.lib_ip.ip_preprocessing as pre
+import detect_compo.lib_ip.ip_draw as draw
+import detect_compo.lib_ip.ip_detection as det
+import detect_compo.lib_ip.ip_segment as seg
+import detect_compo.lib_ip.file_utils as file
+import detect_compo.lib_ip.block_division as blk
+import detect_compo.lib_ip.Component as Compo
+from config.CONFIG_UIED import Config
 C = Config()
 
 
@@ -64,67 +63,51 @@ def nesting_inspection(org, grey, compos):
 
 def compo_detection(input_img_path, output_root, uied_params=None,
                     resize_by_height=600, block_pad=4,
-                    classifier=None, show=False):
+                    show=False):
 
     if uied_params is None:
-        uied_params = {'param-grad':5, 'param-block':5, 'param-minarea':50}
+        uied_params = {'param-grad':5, 'param-block':5, 'param-minarea':700}
     else:
         uied_params = json.loads(uied_params)
-        # print(uied_params)
     start = time.clock()
     name = input_img_path.split('/')[-1][:-4]
-    ip_root = file.build_directory(pjoin(output_root, "ip"))
+    ip_root = file.build_directory(os.path.join(output_root, "ip"))
 
     # *** Step 1 *** pre-processing: read img -> get binary map
+    start = time.time()
     org, grey = pre.read_img(input_img_path, resize_by_height)
     binary = pre.binarization(org, grad_min=int(uied_params['param-grad']))
+    print('Preprocessing time:', time.time() - start)
 
     # *** Step 2 *** element detection
-    det.rm_line(binary, show=show)
-    # det.rm_line_v_h(binary, show=show)
+    start = time.time()
+    # det.rm_line(binary, show=show)
     uicompos = det.component_detection(binary, min_obj_area=int(uied_params['param-minarea']))
-    file.save_corners_json(pjoin(ip_root, name + '_all.json'), uicompos)
-    draw.draw_bounding_box(org, uicompos, show=show, name='components')
+    print('Detection time:', time.time() - start)
 
     # *** Step 4 *** results refinement
-    # uicompos = det.rm_top_or_bottom_corners(uicompos, org.shape)
-    # uicompos = det.merge_text(uicompos, org.shape)
+    start = time.time()
     uicompos = det.merge_intersected_corner(uicompos, org, max_gap=(4, 0), max_ele_height=25)
+    uicompos = det.merge_close_corner(uicompos, org)
     Compo.compos_update(uicompos, org.shape)
     Compo.compos_containment(uicompos)
     draw.draw_bounding_box(org, uicompos, show=show, name='merged')
+    print('Postprocessing(merge) time:', time.time() - start)
 
     # *** Step 5 ** nesting inspection
+    start = time.time()
     uicompos += nesting_inspection(org, grey, uicompos)
     uicompos = det.compo_filter(uicompos, min_area=int(uied_params['param-minarea']))
     Compo.compos_update(uicompos, org.shape)
-    draw.draw_bounding_box(org, uicompos, show=show, name='nesting compo', write_path=pjoin(ip_root, 'result.jpg'))
-    draw.draw_bounding_box(org, uicompos, write_path=pjoin(output_root, 'result.jpg'))
-
-    # *** Step 5 *** Image Inspection: recognize image -> remove noise in image -> binarize with larger threshold and reverse -> rectangular compo detection
-    # if classifier is not None:
-    #     classifier['Image'].predict(seg.clipping(org, uicompos), uicompos)
-    #     draw.draw_bounding_box_class(org, uicompos, show=show)
-    #     uicompos = det.rm_noise_in_large_img(uicompos, org)
-    #     draw.draw_bounding_box_class(org, uicompos, show=show)
-    #     det.detect_compos_in_img(uicompos, binary_org, org)
-    #     draw.draw_bounding_box(org, uicompos, show=show)
-    # if classifier is not None:
-    #     classifier['Noise'].predict(seg.clipping(org, uicompos), uicompos)
-    #     draw.draw_bounding_box_class(org, uicompos, show=show)
-    #     uicompos = det.rm_noise_compos(uicompos)
-
-    # *** Step 6 *** element classification: all category classification
-    if classifier is not None:
-        classifier['Elements'].predict(seg.clipping(org, uicompos), uicompos)
-        draw.draw_bounding_box_class(org, uicompos, show=show, name='cls', write_path=pjoin(ip_root, 'result.jpg'))
-        draw.draw_bounding_box_class(org, uicompos, write_path=pjoin(output_root, 'result.jpg'))
+    print('Postprocessing(if a block is reported, further divide, filter small boxes) time:', time.time() - start)
 
     Compo.compos_update(uicompos, org.shape)
-    file.save_corners_json(pjoin(ip_root, name + '.json'), uicompos)
-    file.save_corners_json(pjoin(output_root, 'compo.json'), uicompos)
-    seg.dissemble_clip_img_fill(pjoin(output_root, 'clips'), org, uicompos)
+    try:
+        file.save_corners_json(os.path.join(ip_root, name + '.json'), uicompos)
+        file.save_corners_json(os.path.join(output_root, 'compo.json'), uicompos)
+    except Exception as e:
+        print(e)
+        return
 
     print("[Compo Detection Completed in %.3f s] %s" % (time.clock() - start, input_img_path))
-#    if show:
-#        cv2.destroyAllWindows()
+    return org

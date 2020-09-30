@@ -1,15 +1,15 @@
-import cv2
+import cv2.cv2 as cv2
 import numpy as np
 
-import UIED.detect_compo.lib_ip.ip_draw as draw
-import UIED.detect_compo.lib_ip.ip_preprocessing as pre
-from UIED.detect_compo.lib_ip.Component import Component
-import UIED.detect_compo.lib_ip.Component as Compo
-from UIED.config.CONFIG_UIED import Config
+import detect_compo.lib_ip.ip_draw as draw
+import detect_compo.lib_ip.ip_preprocessing as pre
+from detect_compo.lib_ip.Component import Component
+import detect_compo.lib_ip.Component as Compo
+from config.CONFIG_UIED import Config
 C = Config()
 
 
-def merge_intersected_corner(compos, org, max_gap=(0, 0), max_ele_height=25):
+def merge_intersected_corner(compos, org, max_gap=(0, 0), max_ele_height=100):
     changed = False
     new_compos = []
     Compo.compos_update(compos, org.shape)
@@ -36,6 +36,31 @@ def merge_intersected_corner(compos, org, max_gap=(0, 0), max_ele_height=25):
     else:
         return merge_intersected_corner(new_compos, org, max_gap, max_ele_height)
 
+def merge_close_corner(compos, org, max_gap=25):
+    changed = False
+    new_compos = []
+    Compo.compos_update(compos, org.shape)
+    for i in range(len(compos)):
+        merged = False
+        cur_compo = compos[i]
+        for j in range(len(new_compos)):
+            dist = cur_compo.compo_dist(new_compos[j])
+            # print(dist)
+            # draw.draw_bounding_box(org, [cur_compo, new_compos[j]], name='b-merge', show=True)
+            if dist <= 25:
+                new_compos[j].compo_merge(cur_compo)
+                cur_compo = new_compos[j]
+                # draw.draw_bounding_box(org, [new_compos[j]], name='a-merge', show=True)
+                merged = True
+                changed = True
+                # break
+        if not merged:
+            new_compos.append(compos[i])
+
+    if not changed:
+        return compos
+    else:
+        return merge_close_corner(new_compos, org, max_gap)
 
 def merge_text(compos, org_shape, max_word_gad=4, max_word_height=20):
     def is_text_line(compo_a, compo_b):
@@ -172,10 +197,7 @@ def rm_line_v_h(binary, show=False, max_line_thickness=C.THRESHOLD_LINE_THICKNES
 #        cv2.waitKey()
 
 
-def rm_line(binary,
-                 max_line_thickness=C.THRESHOLD_LINE_THICKNESS,
-                 min_line_length_ratio=C.THRESHOLD_LINE_MIN_LENGTH,
-                 show=False):
+def rm_line(binary,  max_line_thickness=C.THRESHOLD_LINE_THICKNESS, min_line_length_ratio=C.THRESHOLD_LINE_MIN_LENGTH, show=False):
     width = binary.shape[1]
     broad = np.zeros(binary.shape[:2], dtype=np.uint8)
 
@@ -239,8 +261,7 @@ def rm_noise_compos(compos):
     return compos_new
 
 
-def rm_noise_in_large_img(compos, org,
-                      max_compo_scale=C.THRESHOLD_COMPO_MAX_SCALE):
+def rm_noise_in_large_img(compos, org, max_compo_scale=C.THRESHOLD_COMPO_MAX_SCALE):
     row, column = org.shape[:2]
     remain = np.full(len(compos), True)
     new_compos = []
@@ -286,8 +307,8 @@ def compo_filter(compos, min_area):
     for compo in compos:
         if compo.height * compo.width < min_area:
             continue
-        if compo.width / compo.height > 25 or compo.height / compo.width > 20:
-            continue
+        # if compo.width / compo.height > 25 or compo.height / compo.width > 20:
+        #     continue
         compos_new.append(compo)
     return compos_new
 
