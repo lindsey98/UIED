@@ -3,14 +3,14 @@ import os
 import time
 import json
 import numpy as np
-import detect_compo.lib_ip.ip_preprocessing as pre
-import detect_compo.lib_ip.ip_draw as draw
-import detect_compo.lib_ip.ip_detection as det
-import detect_compo.lib_ip.ip_segment as seg
-import detect_compo.lib_ip.file_utils as file
-import detect_compo.lib_ip.block_division as blk
-import detect_compo.lib_ip.Component as Compo
-from config.CONFIG_UIED import Config
+import UIED.detect_compo.lib_ip.ip_preprocessing as pre
+import UIED.detect_compo.lib_ip.ip_draw as draw
+import UIED.detect_compo.lib_ip.ip_detection as det
+import UIED.detect_compo.lib_ip.ip_segment as seg
+import UIED.detect_compo.lib_ip.file_utils as file
+import UIED.detect_compo.lib_ip.block_division as blk
+import UIED.detect_compo.lib_ip.Component as Compo
+from UIED.config.CONFIG_UIED import Config
 C = Config()
 
 
@@ -66,7 +66,7 @@ def compo_detection(input_img_path, output_root, uied_params=None,
                     show=False):
 
     if uied_params is None:
-        uied_params = {'param-grad':5, 'param-block':5, 'param-minarea':700}
+        uied_params = {'param-grad':5, 'param-block':5, 'param-minarea':50}
     else:
         uied_params = json.loads(uied_params)
     start = time.clock()
@@ -81,14 +81,13 @@ def compo_detection(input_img_path, output_root, uied_params=None,
 
     # *** Step 2 *** element detection
     start = time.time()
-    # det.rm_line(binary, show=show)
+    det.rm_line(binary, show=show)
     uicompos = det.component_detection(binary, min_obj_area=int(uied_params['param-minarea']))
     print('Detection time:', time.time() - start)
 
     # *** Step 4 *** results refinement
     start = time.time()
     uicompos = det.merge_intersected_corner(uicompos, org, max_gap=(4, 0), max_ele_height=25)
-    uicompos = det.merge_close_corner(uicompos, org)
     Compo.compos_update(uicompos, org.shape)
     Compo.compos_containment(uicompos)
     draw.draw_bounding_box(org, uicompos, show=show, name='merged')
@@ -105,6 +104,7 @@ def compo_detection(input_img_path, output_root, uied_params=None,
     try:
         file.save_corners_json(os.path.join(ip_root, name + '.json'), uicompos)
         file.save_corners_json(os.path.join(output_root, 'compo.json'), uicompos)
+        seg.dissemble_clip_img_fill(os.path.join(output_root, 'clips'), org, uicompos)
     except Exception as e:
         print(e)
         return

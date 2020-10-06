@@ -1,7 +1,7 @@
 from os.path import join as pjoin
 import cv2.cv2 as cv2
 import os
-import detect_compo.ip_region_proposal as ip
+import UIED.detect_compo.ip_region_proposal as ip
 
 
 def resize_height_by_longest_edge(img_path, resize_length=800):
@@ -23,7 +23,7 @@ def main(input_path_img, output_root):
 if __name__ == '__main__':
 
     # set input image path
-    input_path_img = './data/Facebook/FP/allsecurelocksmithandsecurity.com/shot.png'
+    input_path_img = './data/layout_testset/Facebook/FP/actionrehabandsupply.com/shot.png'
     output_root = './data/output'
 
     main(input_path_img, output_root)

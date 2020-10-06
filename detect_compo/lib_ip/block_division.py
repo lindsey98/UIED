@@ -3,12 +3,12 @@ import numpy as np
 from random import randint as rint
 import time
 
-import detect_compo.lib_ip.ip_preprocessing as pre
-import detect_compo.lib_ip.ip_detection as det
-import detect_compo.lib_ip.ip_draw as draw
-import detect_compo.lib_ip.ip_segment as seg
-from detect_compo.lib_ip.Block import Block
-from config.CONFIG_UIED import Config
+import UIED.detect_compo.lib_ip.ip_preprocessing as pre
+import UIED.detect_compo.lib_ip.ip_detection as det
+import UIED.detect_compo.lib_ip.ip_draw as draw
+import UIED.detect_compo.lib_ip.ip_segment as seg
+from UIED.detect_compo.lib_ip.Block import Block
+from UIED.config.CONFIG_UIED import Config
 C = Config()
 
 

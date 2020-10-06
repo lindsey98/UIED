@@ -3,7 +3,7 @@ import json
 import cv2
 from os.path import join as pjoin
 
-from config.CONFIG_UIED import Config
+from UIED.config.CONFIG_UIED import Config
 C = Config()
 
 

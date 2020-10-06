@@ -1,6 +1,6 @@
 import cv2.cv2 as cv2
 import numpy as np
-from config.CONFIG_UIED import Config
+from UIED.config.CONFIG_UIED import Config
 C = Config()
 
 
@@ -33,17 +33,20 @@ def read_img(path, resize_height=None, kernel_size=None):
 def gray_to_gradient(img):
     if len(img.shape) == 3:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    row, column = img.shape[0], img.shape[1]
+    # row, column = img.shape[0], img.shape[1]
     img_f = np.copy(img)
     img_f = img_f.astype("float")
 
-    gradient = np.zeros((row, column))
-    for x in range(row - 1):
-        for y in range(column - 1):
-            gx = abs(img_f[x + 1, y] - img_f[x, y])
-            gy = abs(img_f[x, y + 1] - img_f[x, y])
-            gradient[x, y] = gx + gy
-    gradient = gradient.astype("uint8")
+    kernel_horizontal = np.array([[0, 0, 0],
+                                  [0, -1., 1.],
+                                  [0, 0, 0]])
+    kernel_vertical = np.array([[0, 0, 0],
+                                [0, -1., 0],
+                                [0, 1., 0]])
+    dst1 = abs(cv2.filter2D(img_f, -1, kernel_horizontal))
+    dst2 = abs(cv2.filter2D(img_f, -1, kernel_vertical))
+    gradient = (dst1 + dst2).astype("uint8")
+
     return gradient
 
 

@@ -1,15 +1,15 @@
 import cv2.cv2 as cv2
 import numpy as np
 
-import detect_compo.lib_ip.ip_draw as draw
-import detect_compo.lib_ip.ip_preprocessing as pre
-from detect_compo.lib_ip.Component import Component
-import detect_compo.lib_ip.Component as Compo
-from config.CONFIG_UIED import Config
+import UIED.detect_compo.lib_ip.ip_draw as draw
+import UIED.detect_compo.lib_ip.ip_preprocessing as pre
+from UIED.detect_compo.lib_ip.Component import Component
+import UIED.detect_compo.lib_ip.Component as Compo
+from UIED.config.CONFIG_UIED import Config
 C = Config()
 
 
-def merge_intersected_corner(compos, org, max_gap=(0, 0), max_ele_height=100):
+def merge_intersected_corner(compos, org, max_gap=(0, 0), max_ele_height=25):
     changed = False
     new_compos = []
     Compo.compos_update(compos, org.shape)
@@ -307,8 +307,8 @@ def compo_filter(compos, min_area):
     for compo in compos:
         if compo.height * compo.width < min_area:
             continue
-        # if compo.width / compo.height > 25 or compo.height / compo.width > 20:
-        #     continue
+        if compo.width / compo.height > 25 or compo.height / compo.width > 20:
+            continue
         compos_new.append(compo)
     return compos_new
 
