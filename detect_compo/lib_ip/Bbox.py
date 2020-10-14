@@ -56,7 +56,7 @@ class Bbox:
         # if a is in b
         x_dist = min(abs(row_max_a - row_max_b), abs(row_min_a - row_min_b), abs(row_max_a - row_min_b), abs(row_min_a - row_max_b))
         y_dist = min(abs(col_min_a - col_min_b), abs(col_min_a - col_max_b), abs(col_max_a - col_min_b), abs(col_max_a - col_max_b))
-        dist = math.sqrt((x_dist) ** 2 + (y_dist) ** 2)
+        dist = min(x_dist, y_dist)
         return dist
 
     def bbox_relation_nms(self, bbox_b, bias=(0, 0)):

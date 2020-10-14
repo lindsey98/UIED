@@ -7,14 +7,14 @@ class Config:
     def __init__(self):
         # setting CNN (graphic elements) model
         self.image_shape = (64, 64, 3)
-        self.CNN_PATH = './UIED/model/cnn-rico-1.h5'
+        self.CNN_PATH = './UIED/models/cnn-rico-1.h5'
         self.element_class = ['Button', 'CheckBox', 'Chronometer', 'EditText', 'ImageButton', 'ImageView',
                               'ProgressBar', 'RadioButton', 'RatingBar', 'SeekBar', 'Spinner', 'Switch',
                               'ToggleButton', 'VideoView', 'TextView']
         self.class_number = len(self.element_class)
 
         # setting EAST (ocr) model
-        self.EAST_PATH = './UIED/model/east_icdar2015_resnet_v1_50_rbox'
+        self.EAST_PATH = './UIED/models/east_icdar2015_resnet_v1_50_rbox'
 
         self.COLOR = {'Button': (0, 255, 0), 'CheckBox': (0, 0, 255), 'Chronometer': (255, 166, 166),
                       'EditText': (255, 166, 0),

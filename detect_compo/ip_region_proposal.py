@@ -11,6 +11,7 @@ import UIED.detect_compo.lib_ip.file_utils as file
 import UIED.detect_compo.lib_ip.block_division as blk
 import UIED.detect_compo.lib_ip.Component as Compo
 from UIED.config.CONFIG_UIED import Config
+from UIED.cnn.CNN_fast import predict
 C = Config()
 
 
@@ -62,11 +63,11 @@ def nesting_inspection(org, grey, compos):
 
 
 def compo_detection(input_img_path, output_root, uied_params=None,
-                    resize_by_height=600, block_pad=4,
+                    resize_by_height=600, classifier=None,
                     show=False):
 
     if uied_params is None:
-        uied_params = {'param-grad':5, 'param-block':5, 'param-minarea':50}
+        uied_params = {'param-grad':5, 'param-block':5, 'param-minarea':100}
     else:
         uied_params = json.loads(uied_params)
     start = time.clock()
@@ -88,6 +89,7 @@ def compo_detection(input_img_path, output_root, uied_params=None,
     # *** Step 4 *** results refinement
     start = time.time()
     uicompos = det.merge_intersected_corner(uicompos, org, max_gap=(4, 0), max_ele_height=25)
+    # uicompos = det.merge_close_corner(uicompos, org, max_gap=2)
     Compo.compos_update(uicompos, org.shape)
     Compo.compos_containment(uicompos)
     draw.draw_bounding_box(org, uicompos, show=show, name='merged')
@@ -100,14 +102,19 @@ def compo_detection(input_img_path, output_root, uied_params=None,
     Compo.compos_update(uicompos, org.shape)
     print('Postprocessing(if a block is reported, further divide, filter small boxes) time:', time.time() - start)
 
+    # *** Step 6 ** classify component type
+    start = time.time()
+    uicompos = predict(classifier, seg.clipping(org, uicompos), uicompos)
+    draw.draw_bounding_box_class(org, uicompos, show=show, name='cls', write_path=os.path.join(ip_root, 'result.jpg'))
+    draw.draw_bounding_box_class(org, uicompos, write_path=os.path.join(output_root, 'result.jpg'))
+    print('Classification time:', time.time() - start)
+
     Compo.compos_update(uicompos, org.shape)
+    uicompos = [x for x in uicompos if x.category not in ['Button', 'CheckBox', 'EditText', 'TextView']]
     try:
-        file.save_corners_json(os.path.join(ip_root, name + '.json'), uicompos)
         file.save_corners_json(os.path.join(output_root, 'compo.json'), uicompos)
-        seg.dissemble_clip_img_fill(os.path.join(output_root, 'clips'), org, uicompos)
-    except Exception as e:
-        print(e)
-        return
+    except IndexError:
+        pass
 
     print("[Compo Detection Completed in %.3f s] %s" % (time.clock() - start, input_img_path))
     return org

@@ -36,7 +36,7 @@ def merge_intersected_corner(compos, org, max_gap=(0, 0), max_ele_height=25):
     else:
         return merge_intersected_corner(new_compos, org, max_gap, max_ele_height)
 
-def merge_close_corner(compos, org, max_gap=25):
+def merge_close_corner(compos, org, max_gap=10):
     changed = False
     new_compos = []
     Compo.compos_update(compos, org.shape)
